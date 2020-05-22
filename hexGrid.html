@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HexGridTest</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+	
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+	<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+	<script src="aframe/examples/showcase/link-traversal/js/components/link-controls.js"> </script>
+	<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+  	<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+	
+	<script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+	<script type="text/javascript" src="scripts/myEvents.js"></script>
+
+</head>
+
+<body>
+	   	<a-scene light="defaultLightsEnabled: false" >
+			
+	<a-box width= "1" height= "1" depth= "1" material = "color:#EF2D5E" position= "0 1.5 -4" >
+		<a-animation attribute="scale" dur= "5000" begin="mouseenter" end="mouseleave" from ="1 1 1" to= "5 1 1" ></a-animation>	
+		<a-animation attribute="scale" dur= "5000" begin= "mouseleave" from ="5 1 1" to= "1 1 1" ></a-animation>	
+	</a-box>
+					
+		<a-assets>
+		<img id="link1" src="img/link1.png" alt="link1">	
+		<img id="link2" src="img/link2.png" alt="link2">
+		<img id="link1a" src="img/link1a.png" alt="link1a">	
+		<img id="link2a" src="img/link2a.png" alt="link2a">	
+		</a-assets>	
+			
+			
+	      <a-entity id = "studioName" text="value:Tropical Cyborg; color:#FFFFFF; shader: msdf;
+											font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/encodesanscondensed/EncodeSansCondensed-Regular.json;" scale="15 15 15" position=" 5 3 -4" visible="false" event-set__event="_event: mouseenter; _target:#link1; visible:false"></a-entity>
+			
+		<a-entity>
+		<a-image id="link1st" src="#link1" scale="2 2 2" position="-1.5 2.5 -5.5" event-set__enter="_event: mouseenter; _target:#studioName; visible:true " event-set__leave="_event: mouseleave; _target: #studioName; visible: false " ></a-image>	
+		<a-animation attribute="visible" from="false" to="true" delay="3500" dur="1" fill="both"></a-animation>
+		<a-link href="index.html" title="My Homepage" image="#link2a"></a-link>
+		</a-entity>	
+			
+	
+		
+<!--		<a-entity>
+		<a-image id="link1st" src="#link1" scale="2 2 2" position="-1.5 2.5 -5.5"  event-set__enter="_event: mouseenter; src:#link1a" event-set__leave="_event: mouseleave; src:#link1" ></a-image>	
+		<a-animation attribute="visible" from="false" to="true" delay="3500" dur="1" fill="both"></a-animation>
+		</a-entity>	-->
+			
+			
+		<a-entity>
+		<a-image id="link2nd" src="#link2" scale="2 2 2" position="1.5 2.5 -5.5" event-set__enter="_event: mouseenter; src:#link2a" event-set__leave="_event: mouseleave; src: #link2"></a-image>
+		<a-animation attribute="visible" from="false" to="true" delay="3700" dur="1" fill="both"></a-animation>
+		</a-entity>
+			
+		<a-link href="EventsTest.html" title="EventsTest" image="img/link1.png"></a-link>
+			
+	<a-entity 
+          light="type: point; color: white;"
+          material="color: white;"
+          position="0 3 0">
+	</a-entity>
+		
+		<a-entity>
+		<a-hexgrid src="json/hex-map.json" position="0 -25 0" material="color: #27001B" ></a-hexgrid>
+			
+			<a-animation attribute="rotation" 
+				  dur="100000"
+				  fill="forwards"
+				  direction="normal"
+				  from="0 0 0"
+				  to="0 360 0"
+				  easing="linear"
+				  repeat="indefinite"> 
+	  		</a-animation> 
+		</a-entity>
+			
+		<a-entity>
+
+			<a-hexgrid src="json/hex-map1.json" position="0 -20 -90" material="color: #FF8C00"></a-hexgrid>	
+				
+			<a-animation attribute="rotation" 
+				  dur="200000"
+				  fill="forwards"
+				  direction="normal"
+				  from="0 0 0"
+				  to="0 360 0"
+				  easing="linear"
+				  repeat="indefinite"> 
+	  		</a-animation> 
+			
+		</a-entity>
+			
+		<a-sky src="img/Milkyway_BG.jpg"></a-sky>
+	   
+	  <a-camera>
+			
+	   	<a-cursor color = "#DCDCDC"> </a-cursor>
+			
+	  </a-camera>
+			
+		</a-scene>
+</body>
+</html>

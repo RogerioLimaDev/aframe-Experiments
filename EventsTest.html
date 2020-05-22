@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<title>My A-Frame Scene</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+	<script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+  	<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+ 	<script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+	
+	<script type="text/javascript">
+	
+	AFRAME.registerComponent
+	('log',{
+		  	schema: 
+			{
+				message: {type: 'string'}
+		  	},
+		
+		  	init : 
+			function () 
+			{
+		  		console.log(this.data.message);
+				alert(this.data.message);
+		  	}
+	});
+
+	</script>
+
+</head>
+	
+<body>
+
+  <a-scene light="defaultLightsEnabled: false" log="message:Oi, estranho!">
+
+	<a-entity light="type:point; intensity:0" position="0 0 0 ">
+		<a-entity light="type:point; intensity:3" position="-1 4 0"></a-entity>	
+		<a-entity light="type:point; intensity:4" position="1 4 -4.5"></a-entity>	
+		<a-entity light="type:point; intensity:2" position="0 1 -1.5"></a-entity>		  
+	</a-entity>
+	  
+
+	  
+	  
+	  <a-entity geometry="primitive: box" 
+				material="shader:standard;
+						  color: #EF2D5E;
+						  emissive:#EF2D5E;
+						  emissiveIntensity:0.1"
+						  position="0 3 -3"
+						  rotation="0 30 0" 
+						  shadow 
+						  >
+		  
+		 	  
+		  <a-animation attribute="material.color" 
+				  dur="3000"
+				  fill="forwards"
+				  begin="mouseenter"
+				  end="mouseleave"
+				  direction="alternate"
+				  from="#EF2D5E"
+				  to="#2DEF67"
+				  repeat="indefinite"> 
+	  		</a-animation> 
+		  
+		  <a-animation attribute="rotation" 
+				  dur="10000"
+				  fill="forwards"
+				  begin="mouseenter"
+				  end="mouseleave"
+				  direction="normal"
+				  from="0 0 0"
+				  to="0 360 0"
+				  easing="linear"
+				  repeat="indefinite"> 
+	  		</a-animation> 
+       </a-entity>
+
+    <a-entity geometry="primitive: plane; height: 40; width: 40" rotation="-90 0 0" material="shader:standard; color: red" shadow ></a-entity>
+	  
+
+    <a-sky color="#622000"></a-sky>
+    <a-camera><a-cursor></a-cursor></a-camera>
+  </a-scene>
+</body>
+</html>
